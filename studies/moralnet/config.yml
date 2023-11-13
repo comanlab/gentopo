@@ -1,0 +1,6 @@
+# moralnet config.yml
+study: moralnet
+network_profile:
+  family: small_world
+  members: 16
+  rounds: 3
