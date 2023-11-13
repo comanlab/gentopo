@@ -1,0 +1,1 @@
+print("Testing that generate.py is called with workflow")
