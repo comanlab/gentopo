@@ -1,15 +1,34 @@
 # generate.py
 import yaml
 import glob
+from src import complete
+from src import small_world
+
+
+dispatcher = {
+    "complete": complete,
+    "small_world": small_world,
+}
 
 
 def main():
     for filename in glob.glob("studies/*/config.yml"):
-        print("Running internal")
         with open(filename) as file:
             print(f"Opened {filename}")
-            config = yaml.safe_load(file)
-            print(config)
+
+            try:
+                config = yaml.safe_load(file)
+            except yaml.YAMLError as e:
+                print(e)
+
+            for network in config["networks"]:
+                try:
+                    network_generator = dispatcher[network["family"]]
+                except KeyError:
+                    raise ValueError("Invalid input.")
+
+                print(network["params"])
+                graph = network_generator(network["params"])
 
 
 if __name__ == "__main__":

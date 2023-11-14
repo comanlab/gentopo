@@ -1,6 +1,8 @@
 # moralnet config.yml
-study: moralnet
-network_profile:
-  family: small_world
-  members: 16
-  rounds: 3
+networks:
+  - family: small_world
+    params: # these need to be network family specific
+      n: 16
+      k: 3
+      p: 0.5
+
