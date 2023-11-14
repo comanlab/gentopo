@@ -1,7 +1,7 @@
 # generate.py
 import yaml
 import glob
-import matplotlib.pyplot as plt
+from src import visualize
 from src import complete
 from src import small_world
 
@@ -31,10 +31,8 @@ def main():
                 print(network["params"])
                 graph = network_generator(network["params"])
 
-                positions = nx.circular_layout(graph)
-
-                plt.figure(figsize=(10, 10))
-                topology_visual = nx.draw_networkx(graph, positions)
+                study_path = filename.split("config.yml")[0]
+                visualize(graph, study_path + "topology.png")
 
 
 if __name__ == "__main__":
