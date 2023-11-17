@@ -41,6 +41,7 @@ def generate(filename, test=False, write=False):
                 graph = network_generator(params)
 
             if write:
+                # TODO: Need to add identifiers for each topology?
                 study_path = filename.split("config.yml")[0]
                 visualize(graph, study_path + "topology.png")
             else:

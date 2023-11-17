@@ -4,6 +4,6 @@ networks:
     params: # these need to be network family specific
       n: 16
       k: 5
-      p: 0.2
+      p: 0.3
     test:
       seed: 42

@@ -10,4 +10,7 @@ def small_world(params, seed=None):
     except KeyError:
         raise ValueError("Invalid params for connected_watts_strogatz_graph.")
 
-    return nx.connected_watts_strogatz_graph(n, k, p, tries=100, seed=seed)
+    graph = nx.connected_watts_strogatz_graph(n, k, p, tries=100, seed=seed)
+    print(f"Value of omega: {nx.smallworld.omega(graph)}")
+
+    return graph
