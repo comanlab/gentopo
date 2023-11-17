@@ -6,14 +6,30 @@ Generates network topologies, i.e., arrangements of nodes and edges using Python
 
 Uses Python 3.10.8 and pip 23.3.1 with a virtual environment. To get started, first clone this repository:
 
-```
+```sh
 git clone https://github.com/comanlab/network-topologies.git
 ```
 
-## Develop
+Everything in this repository is meant to run within a virtual environment, which is activated from the root of this repository.
 
-Everything in this repository is meant to run within a virtual environment, which is activated from the root of this repository by running
+### Configuring `virtualenvwrapper`
 
+TODO.
+
+```sh
+mkvirtualenv network-topologies
 ```
-source .venv/bin/activate
+
+### Working in the virual environment
+
+To activate the virtual environment, run
+
+```sh
+workon network-toplogies
+```
+
+Then, install the package dependencies for this project via
+
+```sh
+pip install -r requirements.txt
 ```

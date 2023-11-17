@@ -3,7 +3,7 @@ networks:
   - family: small_world
     params: # these need to be network family specific
       n: 16
-      k: 4
+      k: 5
       p: 0.2
     test:
       seed: 42
