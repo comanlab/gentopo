@@ -1,5 +1,5 @@
 studies/**/*.png
-studies/**/*.json
+studies/**/topology*/*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
