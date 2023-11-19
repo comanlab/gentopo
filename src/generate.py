@@ -10,13 +10,13 @@ dispatcher = {
 }
 
 
-def generate(filename, test=False, write=False):
+def generate(study_name, test=False, write=False):
     """
     Generate network topologies from YAML configurations per study.
     """
     graphs = []
-    with open(filename) as file:
-        print(f"Opened {filename}")
+    with open(f"studies/{study_name}/config.yml") as file:
+        print(f"Opened {study_name} config.yml")
 
         try:
             config = yaml.safe_load(file)
@@ -42,8 +42,9 @@ def generate(filename, test=False, write=False):
 
             if write:
                 # TODO: Need to add identifiers for each topology?
-                study_path = filename.split("config.yml")[0]
-                visualize(graph, study_path + "topology.png")
+                build_id = "t00001"
+                topology_path = f"studies/{study_name}/{build_id}/topology.png"
+                visualize(graph, topology_path)
             else:
                 visualize(graph)
 
