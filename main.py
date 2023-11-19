@@ -6,7 +6,8 @@ from src import generate
 
 def main(**kwargs):
     for filename in glob.glob("studies/*/config.yml"):
-        generate(filename, **kwargs)
+        study_name = filename.split("/")
+        generate(study_name, **kwargs)
 
 
 if __name__ == "__main__":
