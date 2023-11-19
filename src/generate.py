@@ -1,6 +1,7 @@
 import yaml
 from . import visualize
 from . import create_topology_dir
+from . import write_topology_json
 from . import complete
 from . import small_world
 
@@ -46,7 +47,7 @@ def generate(study_name, test=False, write=False):
                 topology_id = create_topology_dir(study_name)
                 topology_path = f"studies/{study_name}/{topology_id}"
                 visualize(graph, topology_path)
-
+                write_topology_json(study_name, topology_id, graph)
             else:
                 visualize(graph)
 

@@ -1,5 +1,7 @@
 import os
 import re
+import json
+from datetime import datetime
 import networkx as nx
 import matplotlib.pyplot as plt
 
@@ -16,7 +18,7 @@ def visualize(graph, path=None):
     topology_visual = nx.draw_networkx(graph, positions(graph))
 
     if path:
-        plt.savefig(f"{path}/topology.png")
+        plt.savefig(f"{path}/diagram.png")
 
 
 def is_topology_dir(p, d):
@@ -38,6 +40,18 @@ def create_topology_dir(study_name):
     return topology_id
 
 
-def write_topology_json(study_name, topology_id):
-    # TODO
-    pass
+def write_topology_json(study_name, topology_id, graph):
+    # TODO: needs to reference config file?
+    dt = datetime.utcnow()
+    topology_metadata = dict(
+        id=topology_id,
+        created_for=study_name,
+        created_at=dt.strftime(format="%Y-%m-%dT%H:%M:%S"),
+        omega=nx.smallworld.omega(graph),
+        network=nx.node_link_data(graph),
+    )
+    filename = f"studies/{study_name}/{topology_id}/metadata.json"
+    with open(filename, "w") as f:
+        f.write(json.dumps(topology_metadata))
+        print(f"wrote {filename} to file")
+    return topology_metadata
