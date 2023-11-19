@@ -1,5 +1,6 @@
 import yaml
 from . import visualize
+from . import create_topology_dir
 from . import complete
 from . import small_world
 
@@ -42,9 +43,10 @@ def generate(study_name, test=False, write=False):
 
             if write:
                 # TODO: Need to add identifiers for each topology?
-                build_id = "t00001"
-                topology_path = f"studies/{study_name}/{build_id}/topology.png"
+                topology_id = create_topology_dir(study_name)
+                topology_path = f"studies/{study_name}/{topology_id}"
                 visualize(graph, topology_path)
+
             else:
                 visualize(graph)
 
