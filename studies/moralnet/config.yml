@@ -1,9 +1,23 @@
 # moralnet config.yml
+project: moralnet
+topology:
+  family: small_world # always required
+  n: 16 # always required
+  connected: true
+  directed: false
+  constraints:
+    k: 5
+    p: 0.3
+    omega_range: [0.4, 0.6]
+interaction:
+  participants: 2
+  rounds: 3
+  repeats: false
+
+# Likely removing this direction
 networks:
   - family: small_world
     params: # these need to be network family specific
       n: 16
       k: 5
       p: 0.3
-    test:
-      seed: 42
