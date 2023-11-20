@@ -8,16 +8,9 @@ topology:
   constraints:
     k: 5
     p: 0.3
-    omega_range: [0.4, 0.6]
-interaction:
+    omega_range: [0.4, 0.6] # range for small worldness relative to real world networks
+    links_range: [2, 4] # range of connections a node should have overall?
+interactions:
   participants: 2
   rounds: 3
   repeats: false
-
-# Likely removing this direction
-networks:
-  - family: small_world
-    params: # these need to be network family specific
-      n: 16
-      k: 5
-      p: 0.3
