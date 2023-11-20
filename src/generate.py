@@ -1,4 +1,5 @@
 import yaml
+from . import validate_config
 from . import visualize
 from . import create_topology_dir
 from . import write_topology_json
