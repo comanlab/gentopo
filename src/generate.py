@@ -1,4 +1,3 @@
-import yaml
 from . import validate_config
 from . import visualize
 from . import create_topology_dir
@@ -17,41 +16,25 @@ def generate(study_name, test=False, write=False):
     """
     Generate network topologies from YAML configurations per study.
     """
-    graphs = []
-    with open(f"studies/{study_name}/config.yml") as file:
-        print(f"Opened {study_name} config.yml")
+    config = validate_config(study_name)
+    topology = config["topology"]
 
-        try:
-            config = yaml.safe_load(file)
-        except yaml.YAMLError as e:
-            print(e)
+    try:
+        network_generator = dispatcher[topology["family"]]
+    except KeyError:
+        raise ValueError(f"{topology['family']} is not a supported family of networks.")
 
-        for network in config["networks"]:
-            try:
-                network_generator = dispatcher[network["family"]]
-            except KeyError:
-                raise ValueError("Invalid input.")
+    n = topology["n"]
+    params = topology["params"]
+    graph = network_generator(n, params)
 
-            params = network["params"]
+    if write:
+        # TODO: Need to add identifiers for each topology?
+        topology_id = create_topology_dir(study_name)
+        topology_path = f"studies/{study_name}/{topology_id}"
+        visualize(graph, topology_path)
+        write_topology_json(study_name, topology_id, graph)
+    else:
+        visualize(graph)
 
-            if test:
-                try:
-                    seed = network["test"]["seed"]
-                except KeyError:
-                    raise ValueError("Invalid input.")
-                graph = network_generator(params, seed)
-            else:
-                graph = network_generator(params)
-
-            if write:
-                # TODO: Need to add identifiers for each topology?
-                topology_id = create_topology_dir(study_name)
-                topology_path = f"studies/{study_name}/{topology_id}"
-                visualize(graph, topology_path)
-                write_topology_json(study_name, topology_id, graph)
-            else:
-                visualize(graph)
-
-            graphs.append(graph)
-
-    return graphs
+    return graph

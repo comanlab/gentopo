@@ -3,9 +3,9 @@ project: moralnet
 topology:
   family: small_world # always required
   n: 16 # always required
-  connected: true
-  directed: false
-  constraints:
+  connected: true # always required?
+  directed: false # always required?
+  params:
     k: 5
     p: 0.3
     omega_range: [0.4, 0.6] # range for small worldness relative to real world networks

@@ -1,4 +1,5 @@
-import yaml
+from yaml import safe_load
+from glob import glob
 from jsonschema import validate
 
 
@@ -13,7 +14,12 @@ schema = {
                     "default": "complete",
                     "enum": ["complete", "random", "small_world", "lattice"],
                 },
+                "n": {
+                    "type": "number",
+                    # TODO: Combine with and statement for range of accepted n values
+                },
             },
+            "required": ["family", "n", "connected", "directed"],
             "allOf": [
                 {
                     "if": {
@@ -23,32 +29,39 @@ schema = {
                     },
                     "then": {
                         "properties": {
-                            "omega_range": {
-                                "type": "array",
-                                "items": {"type": "number"},
+                            "params": {
+                                "type": "object",
+                                "properties": {
+                                    "omega_range": {
+                                        "type": "array",
+                                        "items": {"type": "number"},
+                                    },
+                                },
+                                "required": ["omega_range"],
                             },
                         },
+                        "required": ["params"],
                     },
                 },
             ],
         },
         "interactions": {"type": "object"},
     },
+    "required": ["project", "topology", "interactions"],
 }
 
 
 def validate_config(study_name):
-    """
-    Validate a config.yml for a given study_name.
+    """Validate config.yml files in the studies directory.
 
-    Returns config in dict format if no error
+    Args:
+        study_name (str): lowercase name of study
+
+    Returns:
+        config: dict of config details for generating topologies
     """
     with open(f"studies/{study_name}/config.yml") as file:
-        print(f"Opened {study_name} config.yml")
+        config = safe_load(file)
+        validate(instance=config, schema=schema)
 
-        try:
-            config = yaml.safe_load(file)
-            validate(instance=config, schema=schema)
-            return config
-        except yaml.YAMLError as e:
-            print(e)
+    return config
