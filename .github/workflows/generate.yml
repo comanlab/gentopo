@@ -1,9 +1,6 @@
 name: Generate Network Topologies
 
 on:
-  push:
-    branches:
-      - main
   workflow_dispatch:
 
 jobs:
