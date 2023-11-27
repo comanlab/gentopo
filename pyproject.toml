@@ -3,5 +3,29 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
+name = "gentopo"
+version = "0.0.0"
+dependencies = [
+    "networkx==3.2.1",
+    "numpy==1.26.2",
+]
+requires-python = ">=3.10"
+authors = [
+    {name = "Ari Dyckovsky", email="aridyckovsky@gmail.com"},
+]
+maintainers = [
+    {name = "Ari Dyckovsky", email="aridyckovsky@gmail.com"},
+]
+description = "Generate network topologies and underlying sequences of interactions that lead to them."
+keywords = [
+    "networks", "interaction", "social science", "topology",
+]
+readme = "README.md"
+license = "MIT"
+classifiers = [ 
+    "Programming Language :: Python",
+]
 
-[tool]
+[project.urls]
+Homepage = "https://github.com/comanlab/network-topologies"
+Repository = "https://github.com/comanlab/network-topologies.git"
