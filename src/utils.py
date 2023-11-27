@@ -3,11 +3,30 @@ import re
 import json
 from datetime import datetime
 import networkx as nx
+from statistics import mean, median
 import matplotlib.pyplot as plt
 
 
 def positions(graph):
     return nx.circular_layout(graph)
+
+
+def degree_statistics(graph):
+    """Get the statistics of a graph's degrees across nodes.
+
+    Args:
+        graph (NetworkX Graph): A generated NetworkX graph.
+
+    Returns:
+        dict: A dictionary with min, mean, median, and max
+    """
+    degrees = [deg for (node, deg) in graph.degree()]
+    return {
+        "min": min(degrees),
+        "mean": mean(degrees),
+        "median": median(degrees),
+        "max": max(degrees),
+    }
 
 
 def visualize(graph, path=None):

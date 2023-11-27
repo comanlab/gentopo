@@ -2,6 +2,7 @@
 print("Initializing source files...")
 
 from .utils import visualize
+from .utils import degree_statistics
 from .utils import create_topology_dir
 from .utils import write_topology_json
 from .generators.complete import complete
@@ -11,6 +12,7 @@ from .generate import generate
 
 __all__ = [
     "visualize",
+    "degree_statistics",
     "create_topology_dir",
     "write_topology_json",
     "complete",
