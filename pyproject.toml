@@ -27,5 +27,5 @@ classifiers = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/comanlab/network-topologies"
-Repository = "https://github.com/comanlab/network-topologies.git"
+Homepage = "https://github.com/comanlab/gentopo"
+Repository = "https://github.com/comanlab/gentopo.git"

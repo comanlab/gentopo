@@ -1,4 +1,4 @@
-# Network Topologies
+# GenTopo: Generate topologies for interactive network experiments
 
 Generates network topologies, i.e., arrangements of nodes and edges using Python and exports the topologies for use in CiCL studies built on top of [interactive-network-base](https://github.com/comanlab/interactive-network-base).
 
@@ -7,7 +7,7 @@ Generates network topologies, i.e., arrangements of nodes and edges using Python
 Uses Python 3.10.8 and pip 23.3.1 with a virtual environment. To get started, first clone this repository:
 
 ```sh
-git clone https://github.com/comanlab/network-topologies.git
+git clone https://github.com/comanlab/gentopo.git
 ```
 
 Everything in this repository is meant to run within a virtual environment, which is activated from the root of this repository.
@@ -17,7 +17,7 @@ Everything in this repository is meant to run within a virtual environment, whic
 TODO.
 
 ```sh
-mkvirtualenv network-topologies
+mkvirtualenv gentopo
 ```
 
 ### Working in the virual environment
@@ -25,7 +25,7 @@ mkvirtualenv network-topologies
 To activate the virtual environment, run
 
 ```sh
-workon network-toplogies
+workon gentopo
 ```
 
 Then, install the package dependencies for this project via
