@@ -1,7 +1,7 @@
 import networkx as nx
 
 
-def small_world(n, params, seed=None):
+def small_world(n, params):
     """
     Generates a small world network with n nodes.
     """
@@ -12,7 +12,7 @@ def small_world(n, params, seed=None):
 
     sufficient = False
     while not sufficient:
-        graph = nx.connected_watts_strogatz_graph(n, k, p, tries=100, seed=seed)
+        graph = nx.connected_watts_strogatz_graph(n, k, p, tries=100)
         omega = nx.smallworld.omega(graph)
         print(f"Value of omega: {omega}")
 
