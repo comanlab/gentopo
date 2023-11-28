@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "gentopo"
-version = "0.0.0"
+dynamic = ["version"]
 dependencies = [
     "networkx==3.2.1",
     "numpy==1.26.2",
@@ -29,3 +29,6 @@ classifiers = [
 [project.urls]
 Homepage = "https://github.com/comanlab/gentopo"
 Repository = "https://github.com/comanlab/gentopo.git"
+
+[tool.hatch.version]
+path = "src/gentopo/__about__.py"
