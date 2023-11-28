@@ -8,6 +8,7 @@ dynamic = ["version"]
 dependencies = [
     "networkx==3.2.1",
     "numpy==1.26.2",
+    "click",
 ]
 requires-python = ">=3.10"
 authors = [
@@ -32,3 +33,11 @@ Repository = "https://github.com/comanlab/gentopo.git"
 
 [tool.hatch.version]
 path = "src/gentopo/__about__.py"
+
+[tool.hatch.envs.default]
+dependencies = [
+  "pytest",
+]
+
+[tool.hatch.envs.default.scripts]
+test = "pytest {args:tests}"
