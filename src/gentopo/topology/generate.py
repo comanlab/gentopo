@@ -1,9 +1,12 @@
-from . import validate_config
-from . import visualize
-from . import create_topology_dir
-from . import write_topology_json
-from . import complete
-from . import small_world
+"""
+generate.py
+"""
+from gentopo.topology.validate_config import validate_config
+from gentopo.topology.utils import visualize
+from gentopo.topology.utils import create_topology_dir
+from gentopo.topology.utils import write_topology_json
+from gentopo.topology.families import complete
+from gentopo.topology.families import small_world
 
 
 dispatcher = {
