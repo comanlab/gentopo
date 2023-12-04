@@ -2,15 +2,15 @@
 project: moralnet
 topology:
   family: small_world # always required
-  n: 16 # always required
   connected: true # always required?
   directed: false # always required?
-  params:
+  inputs: # must be the chosen family's required inputs
+    n: 16
     k: 5
     p: 0.3
-    omega_range: [0.4, 0.6] # range for small worldness relative to real world networks
-    links_range: [2, 4] # range of connections a node should have overall?
-interactions:
-  participants: 2
-  rounds: 3
-  repeats: false
+  conditions:
+    omega: [0.4, 0.6] # range for small worldness relative to real world networks
+    degree: [3, 5] # range of connections any node should have
+    rounds: 5
+    repeats: false
+    subgraphs: 2
