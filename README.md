@@ -6,7 +6,7 @@ Generates network topologies, i.e., arrangements of nodes and edges using Python
 
 ## Setup
 
-Uses Python 3.10.8 and pip 23.3.1 with a virtual environment. To get started, first clone this repository:
+Uses Python 3.10.13 and pip 23.3.1 with a virtual environment. To get started, first clone this repository:
 
 ```sh
 git clone https://github.com/comanlab/gentopo.git
@@ -22,6 +22,8 @@ TODO.
 mkvirtualenv gentopo
 ```
 
+This will create and activate the virtual environment called `gentopo`.
+
 ### Working in the virual environment
 
 To activate the virtual environment, run
@@ -30,7 +32,7 @@ To activate the virtual environment, run
 workon gentopo
 ```
 
-Then, install the package dependencies for this project via
+If already in the activated environment, the previous command should do nothing. Then, install the package dependencies for this project via
 
 ```sh
 pip install -r requirements.txt

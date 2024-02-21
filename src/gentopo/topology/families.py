@@ -45,7 +45,7 @@ def small_world(n, k, p, rounds):
                 # enforce no self loops or multiple edges
                 while w == u or G.has_edge(u, w):
                     w = random.choice(nodes)
-                # skip if 2 has as many edges as possible rounds
+                # skip if w has as many edges as possible rounds
                 if G.degree(w) >= rounds:
                     continue
                 else:
