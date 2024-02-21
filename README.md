@@ -16,7 +16,15 @@ Everything in this repository is meant to run within a virtual environment, whic
 
 ### Configuring `virtualenvwrapper`
 
-TODO.
+TODO: If `.python-version` is already present, will skipping to `mkvirtualenv gentopo` successfully install and use 3.10.13 from `pyenv`?
+
+Use Pyenv within the root directory of this project to use the desired Python version via
+
+```sh
+pyenv local 3.10.13
+```
+
+After installing and setting the local directory's Python version, ensure `pyenv local` returns 3.10.13 to confirm the intended Python version is in use from those installed by `pyenv` on your local machine. (Note: For those bringing their own Python virtual environment manager, e.g. `conda`, this project is tested for Python >=3.10.)
 
 ```sh
 mkvirtualenv gentopo
@@ -32,8 +40,40 @@ To activate the virtual environment, run
 workon gentopo
 ```
 
-If already in the activated environment, the previous command should do nothing. Then, install the package dependencies for this project via
+If already in the activated environment, the previous command should do nothing.
+
+Check that the virtual environment has the expected Python version using
+
+```sh
+which python
+# should result in: $HOME/.virtualenvs/gentopo/bin/python
+```
+
+and
+
+```sh
+python --version
+# should result in: Python 3.10.13 when using pyenv
+```
+
+Locally, Then, install the package dependencies for this project via
 
 ```sh
 pip install -r requirements.txt
 ```
+
+### Jupyter notebooks
+
+To use a Jupyter notebook locally, install a new kernel for the virtual environment via
+
+```sh
+python -m ipykernel install --user --name=gentopo
+```
+
+Then, start a JupyterLab instance with
+
+```sh
+jupyter lab
+```
+
+Select the `genetopo` kernel to from the Launcher to start a new notebook. Or, select an existing file to work on from the File Browser.
