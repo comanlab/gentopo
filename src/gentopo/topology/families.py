@@ -8,7 +8,7 @@ families = Registry()
 
 
 @families.register
-def lattice(n, k):
+def lattice(n: int, k: int) -> nx.Graph:
     if k == n:
         return nx.complete_graph(n)
 
@@ -23,7 +23,7 @@ def lattice(n, k):
 
 
 @families.register
-def small_world(n, k, p, rounds):
+def small_world(n: int, k: int, p: float, rounds: int) -> nx.Graph:
     """
     Generates a connected small world network with n nodes.
     """
@@ -55,7 +55,7 @@ def small_world(n, k, p, rounds):
 
 
 @families.register
-def connected_small_world(n, k, p, rounds, tries=100):
+def connected_small_world(n: int, k: int, p: float, rounds: int, tries: int = 100):
     for i in range(tries):
         G = families.small_world(n, k, p, rounds)
         if nx.is_connected(G):
