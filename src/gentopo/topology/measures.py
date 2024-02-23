@@ -4,13 +4,27 @@ from gentopo.topology.families import families
 
 
 class SmallWorldReference(object):
-    def __init__(self, nlist, kmin, kmean, kmax):
-        self.random_topology = {}
-        self.lattice_topology = {}
+    """Generate and constrain a list of small world networks.
+
+    Attributes:
+        object (_type_): _description_
+    """
+
+    def __init__(self, nlist: list, kmin: int, kmean: int, kmax: int) -> None:
+        """Initializes the small world reference topologies (random and lattice) with k-neighbor constraints
+
+        Args:
+            nlist (list):
+            kmin (int): minimum neighbors
+            kmean (int): mean neighbors
+            kmax (int): maximum neighbors
+        """
         self.nlist = nlist
         self.kmin = kmin
         self.kmax = kmax
         self.kmean = kmean
+        self.random_topology = {}
+        self.lattice_topology = {}
 
     def generate(self):
         for n in self.nlist:
