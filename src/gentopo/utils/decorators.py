@@ -1,6 +1,7 @@
 """
 Decorators for GenTopo methods
 """
+
 import functools
 
 

@@ -15,7 +15,6 @@ from gentopo.topology import generate
     invoke_without_command=True,
 )
 @click.version_option(version=__version__, prog_name="gentopo")
-# @click.option("--db", "-d", envvar="WORDS_TUI_DB", default=Path.home() / ".words-tui.db", help="Database file to use")
 def gentopo():
     # TODO
     # generate()

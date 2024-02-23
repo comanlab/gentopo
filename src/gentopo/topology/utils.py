@@ -66,7 +66,7 @@ def write_topology_json(study_name, topology_id, graph):
         id=topology_id,
         created_for=study_name,
         created_at=dt.strftime(format="%Y-%m-%dT%H:%M:%S"),
-        omega=nx.smallworld.omega(graph),
+        omega=nx.omega(graph),
         network=nx.node_link_data(graph),
     )
     filename = f"studies/{study_name}/{topology_id}/metadata.json"

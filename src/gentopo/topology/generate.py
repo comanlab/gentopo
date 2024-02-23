@@ -1,16 +1,18 @@
 """
 generate.py
 """
+
 from gentopo.topology.validate_config import validate_config
 from gentopo.topology.utils import visualize
 from gentopo.topology.utils import create_topology_dir
 from gentopo.topology.utils import write_topology_json
-from gentopo.topology.families import complete
+
+# from gentopo.topology.families import complete
 from gentopo.topology.families import small_world
 
 
 dispatcher = {
-    "complete": complete,
+    # "complete": complete,
     "small_world": small_world,
 }
 
