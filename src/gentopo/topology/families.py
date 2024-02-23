@@ -7,7 +7,7 @@ from gentopo.utils.decorators import Registry
 families = Registry()
 
 
-@families.register  # pylint: disable=E1101
+@families.register
 def lattice(n: int, k: int) -> nx.Graph:
     if k == n:
         return nx.complete_graph(n)
@@ -22,7 +22,8 @@ def lattice(n: int, k: int) -> nx.Graph:
     return G
 
 
-@families.register  # pylint: disable=E1101
+#
+@families.register
 def small_world(n: int, k: int, p: float, rounds: int) -> nx.Graph:
     """
     Generates a connected small world network with n nodes.
@@ -53,7 +54,7 @@ def small_world(n: int, k: int, p: float, rounds: int) -> nx.Graph:
     return G
 
 
-@families.register  # pylint: disable=E1101
+@families.register
 def connected_small_world(n: int, k: int, p: float, rounds: int, tries: int = 100):
     for i in range(tries):
         G = families.small_world(n, k, p, rounds)

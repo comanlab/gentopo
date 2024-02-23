@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "gentopo"
-dynamic = ["version", "urls"]
+dynamic = ["version"]
 dependencies = [
     "networkx==3.2.1",
     "numpy==1.26.2",
